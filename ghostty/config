@@ -1,0 +1,50 @@
+# ┏━╸┏━┓┏┓╻╺┳╸┏━┓
+# ┣╸ ┃ ┃┃┗┫ ┃ ┗━┓
+# ╹  ┗━┛╹ ╹ ╹ ┗━┛
+
+font-family             = "IosevkaTerm NFM"
+font-family-bold        = "IosevkaTerm NFM Bold"
+font-family-italic      = "IosevkaTerm NFM Italic"
+font-family-bold-italic = "IosevkaTerm NFM Bold Italic"
+font-size = 16
+
+# ┏━╸┏━┓╻  ┏━┓┏━┓┏━┓
+# ┃  ┃ ┃┃  ┃ ┃┣┳┛┗━┓
+# ┗━╸┗━┛┗━╸┗━┛╹┗╸┗━┛
+
+background              = #2d2a2e
+foreground              = #978C8C
+selection-foreground    = #DCD9CF
+selection-background    = #514A50
+
+# blacks
+palette = 0=#3F3A3F
+palette = 8=#746B6F
+
+# reds
+palette = 1=#94434A
+palette = 9=#FC5C65
+
+# greens
+palette = 2=#788867
+palette = 10=#C3E69F
+
+# yellows
+palette = 3=#928161
+palette = 11=#F7D794
+
+# blues
+palette = 4=#558087
+palette = 12=#7ED6DF
+
+# magentas
+palette = 5=#925D71
+palette = 13=#F78FB3
+
+# cyans
+palette = 6=#558087
+palette = 14=#87DCC6
+
+# whites
+palette = 7=#EEEDE0
+palette = 15=#FDFFF1
