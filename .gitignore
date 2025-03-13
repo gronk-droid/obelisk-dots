@@ -9,14 +9,22 @@
 # ┗━┛┗━┛╹ ╹┗━╸    ╹ ╹ ╹╹╹ ╹┗━┛┗━┛
 !.gitignore
 !.gitconfig
-!ghostty/**
+!ghostty/**# blacks
+palette = 0 = #3F3A3F
+palette = 8 = #746B6F
+
+# reds
+palette = 1 = #94434A
+palette = 9 = #FC5C65
+
+# green
+
 !hypr/**
 !btop/btop.conf
 !nnn/**
 !waybar/**
 !wlogout/**
 !wofi/**
-!xfce4/**
 !kitty/**
 !fish/**
 !pipes-rs/**
