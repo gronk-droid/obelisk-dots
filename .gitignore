@@ -10,7 +10,7 @@
 !.gitignore
 !.gitconfig
 !hypr/**
-!btop/**
+!btop/btop.conf
 !nnn/**
 !waybar/**
 !wlogout/**
@@ -19,6 +19,7 @@
 !kitty/**
 !fish/**
 !pipes-rs/**
+!.scripts/**
 !.xinitrc
 !.Xresources
 !colors.conf

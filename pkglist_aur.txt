@@ -1,0 +1,7 @@
+grimblast-git
+paru
+paru-debug
+pokemon-colorscripts-git
+visual-studio-code-bin
+wlogout
+zen-browser

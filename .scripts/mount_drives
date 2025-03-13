@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo mount --mkdir /dev/sda2 /mnt/ABSOLUTE-UNIT
+sudo mount --mkdir /dev/nvme0n1p2 /mnt/FUNKY-FROGGER

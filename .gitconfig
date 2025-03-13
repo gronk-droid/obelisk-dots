@@ -1,0 +1,5 @@
+[user]
+	name = gronk-droid
+	email = gronk.droid@gmail.com
+[init]
+	defaultBranch = trunk

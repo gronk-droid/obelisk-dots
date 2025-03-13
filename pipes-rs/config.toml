@@ -1,0 +1,7 @@
+bold = true
+color_mode = "ansi"
+palette = "darker"
+turn_chance = 0.02
+kinds = ["heavy"]
+delay_ms = 50
+reset_threshold = 0.09
