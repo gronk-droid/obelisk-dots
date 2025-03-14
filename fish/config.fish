@@ -23,3 +23,5 @@ set tacklebox_path ~/.tackle ~/.tacklebox
 
 # Load Tacklebox configuration
 . ~/.tacklebox/tacklebox.fish
+
+fish_add_path /home/gronk-droid/.spicetify
