@@ -1,3 +1,3 @@
 function lr
-    exa --sort Name --long --recurse --tree --icons
+    exa --sort Name --long --recurse --tree --icons $argv
 end

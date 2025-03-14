@@ -1,3 +1,3 @@
 function ll
-    exa --sort Name --icons --long
+    exa --sort Name --icons --long $argv
 end
