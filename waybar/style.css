@@ -16,19 +16,19 @@
 @import "axgruv.css";
 
 * {
-	border: none;
-	border-radius: 0px;
-	font-family: 'IosevkaTerm NFP';
-	font-size: 11pt;
-	font-style: normal;
-	min-height: 0;
+  border: none;
+  border-radius: 0px;
+  font-family: "IosevkaTerm NFP";
+  font-size: 11pt;
+  font-style: normal;
+  min-height: 0;
 }
 
 window#waybar {
-	background: transparent;
-	/* border: 2px solid @brblack; */
-	/* border-radius: 10px; */
-	/* color: @white; */
+  background: transparent;
+  /* border: 2px solid @brblack; */
+  /* border-radius: 10px; */
+  /* color: @white; */
 }
 
 #workspaces {
@@ -36,129 +36,138 @@ window#waybar {
   border-radius: 10px;
   padding: 5px 8px;
   margin: 10px;
-  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
   border: 1px solid @black;
 }
 
 #workspaces button {
-	border-radius: 0px;
-	color: @white;
-	/* transition: all 0.25s ease-in-out; */
+  border-radius: 0px;
+  color: @white;
+  /* transition: all 0.25s ease-in-out; */
 }
 
 #workspaces button.persistent {
-	color: @white;
+  color: @white;
 }
 
 #workspaces button.empty {
-    color: @brblack;
+  color: @brblack;
 }
 
 #workspaces button.active {
   color: #7f849c;
-  text-shadow:
-    0.25px 0.25px 0 #7f849c,
-    -0.25px 0.25px 0 #7f849c,
-    -0.25px -0.25px 0 #7f849c,
-    0.25px -0.25px 0 #7f849c;
+  text-shadow: 0.25px 0.25px 0 #7f849c, -0.25px 0.25px 0 #7f849c,
+    -0.25px -0.25px 0 #7f849c, 0.25px -0.25px 0 #7f849c;
 }
 
 #workspaces button:hover {
-	background-color: transparent;
-	color: #a6adc8;
+  background-color: transparent;
+  color: #a6adc8;
 }
 
 #tray {
-	padding: 5px 10px;
-	margin: 10px 5px;
+  padding: 5px 10px;
+  margin: 10px 5px;
   background: black;
   border-radius: 10px;
-  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
   border: 1px solid @black;
 }
 
 #clock {
-	color: #7f849c;
+  color: #7f849c;
   background: black;
   border-radius: 10px;
-	padding: 5px 14px;
-	margin: 10px 10px 10px 0px;
-	font-weight: bold;
+  padding: 5px 14px;
+  margin: 10px 10px 10px 0px;
+  font-weight: bold;
   font-size: 25px;
-  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
   border: 1px solid @black;
 }
 
 #custom-launcher {
-	color: #7f849c;
-	background: black;
+  color: #7f849c;
+  background: black;
   border-radius: 10px;
-	font-family: 'IosevkaTerm NFP';
-	font-size: 20px;
-	padding: 8px 11px 8px 11px;
+  font-family: "IosevkaTerm NFP";
+  font-size: 20px;
+  padding: 8px 11px 8px 11px;
   margin: 10px 0px 10px 10px;
-  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
   border: 1px solid @black;
 }
 
 #custom-playerlabel {
-	font-weight: bold;
+  font-weight: bold;
   /* font-style: italic; */
   background: black;
   color: #7f849c;
   padding: 5px 14px;
   margin: 10px 5px;
   border-radius: 10px;
-  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
   border: 1px solid @black;
+  /* width: fit-content; */
 }
 
-#cpu, #memory, #disk, #custom-gpu-usage {
-	color: #7f849c;
-	background: black;
+#cpu,
+#memory,
+#disk,
+#custom-gpu-usage {
+  color: #7f849c;
+  background: black;
   border-radius: 10px;
-	font-family: 'Iosevka NFP';
-	font-size: 15px;
-	padding: 8px 11px 8px 11px;
+  font-family: "Iosevka NFP";
+  font-size: 15px;
+  padding: 8px 11px 8px 11px;
   margin: 10px 0px 10px 10px;
-  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
   border: 1px solid @black;
 }
 
-#custom-hyprpicker, #bluetooth, #network, #pulseaudio, #backlight, #battery, #custom-notifications, #custom-power, #custom-screenshot_t {
-	color: #7f849c;
-	font-family: 'Iosevka NFP';
-	font-size: 20px;
-	margin: 0;
-	padding: 0 10px;
+#custom-hyprpicker,
+#bluetooth,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-notifications,
+#custom-power,
+#custom-screenshot_t {
+  color: #7f849c;
+  font-family: "Iosevka NFP";
+  font-size: 20px;
+  margin: 0;
+  padding: 0 10px;
 }
 
-/* #custom-hyprpicker { */
-/*   background: linear-gradient(to left, transparent, @black); */
-/*   border-radius: 100px 0 0 100px; */
-/*   border-top: solid 3px transparent; */
-/*   border-bottom: solid 3px transparent; */
-/*   padding-left: 15px; */
-/* } */
+/* #custom-hyprpicker {
+  background: linear-gradient(to left, transparent, @black);
+  border-radius: 100px 0 0 100px;
+  border-top: solid 3px transparent;
+  border-bottom: solid 3px transparent;
+  padding-left: 15px;
+} */
 
 #bluetooth.connected {
-	color: #a6adc8;
+  color: #a6adc8;
 }
 
 #bluetooth.off {
-	color: @brblack;
+  color: @brblack;
 }
 
 #pulseaudio.muted {
-	color: @brblack;
+  color: @brblack;
 }
 
 #battery.charging {
-	color: #a6adc8;
+  color: #a6adc8;
 }
 
 #battery.warning:not(.charging) {
-	color: @red;
+  color: @red;
 }
 
 #group-applets {
@@ -166,6 +175,6 @@ window#waybar {
   border-radius: 10px;
   padding: 5px 8px;
   margin: 10px 10px 10px 5px;
-  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
   border: 1px solid @black;
 }
