@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-sudo ntfs-3g /dev/sda2 /mnt/ABSOLUTE-UNIT
-sudo ntfs-3g /dev/nvme1n1p2 /mnt/FUNKY-FROGGER
+sudo ntfs-3g -o rw,uid=1000 -uid=ACA6BC2BA6BBF444 /mnt/ABSOLUTE-UNIT
+sudo ntfs-3g -o rw,uid=1000 -uid=9EC2FBAFC2FB89B3 /mnt/FUNKY-FROGGER
