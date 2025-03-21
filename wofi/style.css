@@ -2,18 +2,19 @@ window {
 	margin: 5px;
 	border: transparent;
 	border-radius: 12px;
-	background-color: black;
-	font-family: JetBrains Mono;
-	font-size: 12px;
-	color: #7f849c;
-   
+	background-color: #2d2a2e;
+	font-family: IosevkaTerm NFP;
+	font-size: 24px;
+	color: #978C8C;
+	
 }
 
 #input {
 	margin: 5px;
-	border: 2px solid #9399b2;
+	border: 2px solid #3F3A3F;
 	border-radius: 5px;
 	background-color: transparent;
+	color: #978C8C;
 }
 
 #scroll {
@@ -30,11 +31,12 @@ window {
 }
 
 #entry:selected {
-	border: 2px solid #9399b2;
+	border: 0px;
 	background-color: transparent;
-	border-radius: 5px;
+	/* border-radius: 5px; */
+	color: #FDFFF1;
 }
 
 #text:selected {
-	color: #9399b2;
+	color: #FDFFF1;
 }
