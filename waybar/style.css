@@ -13,7 +13,50 @@
  https://github.com/Axenide/Dotfiles
 */
 
-@import "axgruv.css";
+/* @import "axgruv.css"; */
+/* MONO */
+@define-color black         #2d2a2e;
+@define-color one           #3F3A3F;
+@define-color two           #514A50;
+@define-color three         #625A60;
+@define-color four          #746B6F;
+@define-color five          #857B7E;
+@define-color six           #978C8C;
+@define-color seven         #A89E9C;
+@define-color eight         #B9B1AD;
+@define-color nine          #CBC5BE;
+@define-color ten           #DCD9CF;
+@define-color eleven        #EEEDE0;
+@define-color white         #fdfff1;
+
+/* COLORS */
+@define-color red           #FC5C65;
+@define-color orange        #F19066;
+@define-color yellow        #F7D794;
+@define-color green         #C3E69F;
+@define-color teal          #87DCC6;
+@define-color blue          #7ED6DF;
+@define-color purple        #786FA6;
+@define-color pink          #F78FB3;
+
+/* TINT */
+@define-color light-red     #FDAEAB;
+@define-color light-orange  #F7C7AB;
+@define-color light-yellow  #FAEBC3;
+@define-color light-green   #E0F3C8;
+@define-color light-teal    #C2EDDB;
+@define-color light-purple  #BAB7CB;
+@define-color light-pink    #FAC7D2;
+
+/* SHADE */
+@define-color dark-red      #94434A;
+@define-color dark-orange   #8F5D4A;
+@define-color dark-yellow   #928161;
+@define-color dark-green    #788867;
+@define-color dark-teal     #5A837A;
+@define-color dark-blue     #558087;
+@define-color dark-purple   #524D6A;
+@define-color dark-pink     #925D71;
 
 * {
   border: none;
@@ -27,17 +70,17 @@
 window#waybar {
   background: transparent;
   /* border: 2px solid @brblack; */
-  /* border-radius: 10px; */
+  /* border-radius: 5px; */
   /* color: @white; */
 }
 
 #workspaces {
-  background: black;
-  border-radius: 10px;
+  background: @black;
+  border-radius: 5px;
   padding: 5px 8px;
   margin: 10px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
-  border: 1px solid @black;
+  /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 1); */
+  border: 2px solid @three;
 }
 
 #workspaces button {
@@ -47,67 +90,67 @@ window#waybar {
 }
 
 #workspaces button.persistent {
-  color: @white;
+  color: @three;
 }
 
 #workspaces button.empty {
-  color: @brblack;
+  color: @three;
 }
 
 #workspaces button.active {
-  color: #7f849c;
-  text-shadow: 0.25px 0.25px 0 #7f849c, -0.25px 0.25px 0 #7f849c,
-    -0.25px -0.25px 0 #7f849c, 0.25px -0.25px 0 #7f849c;
+  color: @white;
+  /* text-shadow: 0.25px 0.25px 0 #7f849c, -0.25px 0.25px 0 #7f849c, */
+    /* -0.25px -0.25px 0 #7f849c, 0.25px -0.25px 0 #7f849c; */
 }
 
-#workspaces button:hover {
+/* #workspaces button:hover {
   background-color: transparent;
   color: #a6adc8;
-}
+} */
 
 #tray {
   padding: 5px 10px;
   margin: 10px 5px;
-  background: black;
-  border-radius: 10px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  background: @black;
+  border-radius: 5px;
+  /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 1); */
   border: 1px solid @black;
 }
 
 #clock {
-  color: #7f849c;
-  background: black;
-  border-radius: 10px;
+  color: @white;
+  background: @black;
+  border-radius: 5px;
   padding: 5px 14px;
   margin: 10px 10px 10px 0px;
   font-weight: bold;
   font-size: 25px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
-  border: 1px solid @black;
+  /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 1); */
+  border: 2px solid @three;
 }
 
 #custom-launcher {
-  color: #7f849c;
-  background: black;
-  border-radius: 10px;
+  color: @white;
+  background: @black;
+  border-radius: 5px;
   font-family: "IosevkaTerm NFP";
   font-size: 20px;
   padding: 8px 11px 8px 11px;
   margin: 10px 0px 10px 10px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
-  border: 1px solid @black;
+  /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 1); */
+  border: 2px solid @three;
 }
 
 #custom-playerlabel {
   font-weight: bold;
   /* font-style: italic; */
-  background: black;
-  color: #7f849c;
+  background: @black;
+  color: @white;
   padding: 5px 14px;
   margin: 10px 5px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
-  border: 1px solid @black;
+  border-radius: 5px;
+  /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 1); */
+  border: 2px solid @three;
   /* width: fit-content; */
 }
 
@@ -116,13 +159,13 @@ window#waybar {
 #disk,
 #custom-gpu-usage {
   color: #7f849c;
-  background: black;
-  border-radius: 10px;
+  background: @black;
+  border-radius: 5px;
   font-family: "Iosevka NFP";
   font-size: 15px;
   padding: 8px 11px 8px 11px;
   margin: 10px 0px 10px 10px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 1); */
   border: 1px solid @black;
 }
 
@@ -135,7 +178,7 @@ window#waybar {
 #custom-notifications,
 #custom-power,
 #custom-screenshot_t {
-  color: #7f849c;
+  color: @white;
   font-family: "Iosevka NFP";
   font-size: 20px;
   margin: 0;
@@ -155,11 +198,11 @@ window#waybar {
 }
 
 #bluetooth.off {
-  color: @brblack;
+  color: @three;
 }
 
 #pulseaudio.muted {
-  color: @brblack;
+  color: @three;
 }
 
 #battery.charging {
@@ -167,14 +210,14 @@ window#waybar {
 }
 
 #battery.warning:not(.charging) {
-  color: @red;
+  color: red;
 }
 
 #group-applets {
-  background: black;
-  border-radius: 10px;
+  background: @black;
+  border-radius: 5px;
   padding: 5px 8px;
   margin: 10px 10px 10px 5px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
-  border: 1px solid @black;
+  /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 1); */
+  border: 2px solid @three;
 }
