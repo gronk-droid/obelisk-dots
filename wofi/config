@@ -9,11 +9,11 @@ width=750
 height=600
 mode=drun,run
 
-x=10
-y=6
-location=top_left
+#x=10
+#y=6
 
-prompt=apps
+location=center
+prompt=
 term=ghostty
 
 allow_images=false
