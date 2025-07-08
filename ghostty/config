@@ -17,34 +17,77 @@ foreground              = #978C8C
 selection-foreground    = #DCD9CF
 selection-background    = #514A50
 
+
+# ╺┳┓┏━┓┏━┓╻┏ 
+#  ┃┃┣━┫┣┳┛┣┻┓
+# ╺┻┛╹ ╹╹┗╸╹ ╹
+
+# # blacks
+# palette = 0=#3F3A3F
+# palette = 8=#746B6F
+
+# # reds
+# palette = 1=#94434A
+# palette = 9=#FC5C65
+
+# # greens
+# palette = 2=#788867
+# palette = 10=#C3E69F
+
+# # yellows
+# palette = 3=#928161
+# palette = 11=#F7D794
+
+# # blues
+# palette = 4=#558087
+# palette = 12=#7ED6DF
+
+# # magentas
+# palette = 5=#925D71
+# palette = 13=#F78FB3
+
+# # cyans
+# palette = 6=#558087
+# palette = 14=#87DCC6
+
+# # whites
+# palette = 7=#EEEDE0
+# palette = 15=#FDFFF1
+
+
+
+# ╻  ╻┏━╸╻ ╻╺┳╸
+# ┃  ┃┃╺┓┣━┫ ┃ 
+# ┗━╸╹┗━┛╹ ╹ ╹ 
+
 # blacks
-palette = 0=#3F3A3F
-palette = 8=#746B6F
+palette = 0=#746B6F
+palette = 8=#3F3A3F
 
 # reds
-palette = 1=#94434A
-palette = 9=#FC5C65
+palette = 1=#FC5C65
+palette = 9=#94434A
 
 # greens
-palette = 2=#788867
-palette = 10=#C3E69F
+palette = 2=#C3E69F
+palette = 10=#788867
 
 # yellows
-palette = 3=#928161
-palette = 11=#F7D794
+palette = 3=#F7D794
+palette = 11=#928161
 
 # blues
-palette = 4=#558087
-palette = 12=#7ED6DF
+palette = 4=#7ED6DF
+palette = 12=#558087
 
 # magentas
-palette = 5=#925D71
-palette = 13=#F78FB3
+palette = 5=#F78FB3
+palette = 13=#925D71
 
 # cyans
-palette = 6=#558087
-palette = 14=#87DCC6
+palette = 6=#87DCC6
+palette = 14=#558087
 
 # whites
-palette = 7=#EEEDE0
-palette = 15=#FDFFF1
+palette = 7=#FDFFF1
+palette = 15=#EEEDE0
