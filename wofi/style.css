@@ -1,7 +1,7 @@
 window {
 	margin: 5px;
-	border: transparent;
-	border-radius: 12px;
+	border: 2px solid #625A60;
+	border-radius: 5px;
 	background-color: #2d2a2e;
 	font-family: IosevkaTerm NFP;
 	font-size: 24px;
@@ -11,7 +11,7 @@ window {
 
 #input {
 	margin: 5px;
-	border: 2px solid #3F3A3F;
+	border: transparent;
 	border-radius: 5px;
 	background-color: transparent;
 	color: #978C8C;
