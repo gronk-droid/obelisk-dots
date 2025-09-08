@@ -34,3 +34,4 @@ palette = 9 = #FC5C65
 !colors.conf
 !pkglist.txt
 !pkglist_aur.txt
+!vivaldi-snippets/**
