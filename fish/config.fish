@@ -39,3 +39,8 @@ if not contains $_asdf_shims $PATH
     set -gx --prepend PATH $_asdf_shims
 end
 set --erase _asdf_shims
+
+# zoxide init
+zoxide init --cmd cd fish | source
+
+set -gx SSH_AUTH_SOCK ~/.1password/agent.sock
