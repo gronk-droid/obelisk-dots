@@ -35,3 +35,4 @@ palette = 9 = #FC5C65
 !pkglist.txt
 !pkglist_aur.txt
 !vivaldi-snippets/**
+!espanso/**
