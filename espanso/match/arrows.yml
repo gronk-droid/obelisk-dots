@@ -1,0 +1,29 @@
+matches:
+    - trigger: ":nrightarrow"
+      replace: ↛
+    - trigger: ":rightarrow"
+      replace: →
+    - trigger: ":leftarrow"
+      replace: ←
+    - trigger: ":Rightarrow"
+      replace: ⟹
+    - trigger: ":Leftarrow"
+      replace: ⟸
+    - trigger: ":Leftrightarrow"
+      replace: ⇔
+    - trigger: ":uparrow"
+      replace: ↑
+    - trigger: ":downarrow"
+      replace: ↓
+    - trigger: ":leftrightarrow"
+      replace: ↔
+    - trigger: ":updownarrow"
+      replace: ↕
+    - trigger: ":searrow"
+      replace: ↘
+    - trigger: ":swarrow"
+      replace: ↙
+    - trigger: ":nearrow"
+      replace: ↗
+    - trigger: ":nwarrow"
+      replace: ↖

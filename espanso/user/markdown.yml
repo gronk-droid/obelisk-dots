@@ -1,0 +1,10 @@
+name: markdown
+parent: default
+
+matches:
+  - trigger: ":pagebreak"
+    replace: "<div style=\"page-break-after: always; break-after: page;\"></div>"
+
+  - trigger: ":divcenter"
+    replace: "<div class=\"center\">
+              \n\n</div>"
