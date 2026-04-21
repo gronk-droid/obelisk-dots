@@ -2,7 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-
 # starship prompt
 starship init fish | source
 enable_transience
@@ -44,3 +43,5 @@ set --erase _asdf_shims
 zoxide init --cmd cd fish | source
 
 set -gx SSH_AUTH_SOCK ~/.1password/agent.sock
+set -gx PATH "/home/gronk-droid/.dnsimple/bin" $PATH
+

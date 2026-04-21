@@ -14,7 +14,7 @@ function spotdl-o
         echo "Attempt "(math $retry_count + 1)" of $max_retries..."
         
         if spotdl $link \
-            --format wav \
+            --format flac \
             --output "{artist}/{album}/{track-number}-{title}" \
             --log-level ERROR 2>/dev/null
             echo "Download completed successfully!"
@@ -32,7 +32,7 @@ function spotdl-o
     end
 
     # Post-process directory and filenames: lowercase + replace spaces with hyphens
-    for f in **/*.wav
+    for f in **/*.flac
         # Get the directory path and filename
         set dir_path (dirname "$f")
         set filename (basename "$f")
@@ -43,21 +43,12 @@ function spotdl-o
         # Convert filename to lowercase and replace spaces with hyphens
         set new_filename (string replace -a " " "-" (string lower "$filename"))
         
-        # Handle directory creation and collisions
-        if test "$dir_path" != "$new_dir_path"
-            # Remove only the specific album directory if it exists
-            if test -d "$new_dir_path"
-                echo "Album directory '$new_dir_path' already exists. Removing and replacing..."
-                rm -rf "$new_dir_path"
-            end
-            mkdir -p "$new_dir_path"
-        end
+        # Create target directory
+        mkdir -p "$new_dir_path"
         
         # Move file (overwrite if exists)
         set target_file "$new_dir_path/$new_filename"
-        if test "$f" != "$target_file"
-            mv "$f" "$target_file"
-        end
+        mv -f "$f" "$target_file"
     end
     
     # Clean up empty directories (in case of name changes)
