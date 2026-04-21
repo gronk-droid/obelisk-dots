@@ -177,7 +177,28 @@ window#waybar {
 #battery,
 #custom-notifications,
 #custom-power,
-#custom-screenshot_t {
+#custom-screenshot_t,
+#custom-niri-workspace,
+#custom-niri-window-0,
+#custom-niri-window-1,
+#custom-niri-window-2,
+#custom-niri-window-3,
+#custom-niri-window-4,
+#custom-niri-window-5,
+#custom-niri-window-6,
+#custom-niri-window-7,
+#custom-niri-window-8,
+#custom-niri-window-9,
+#custom-niri-window-10,
+#custom-niri-window-11,
+#custom-niri-window-12,
+#custom-niri-window-13,
+#custom-niri-window-14,
+#custom-niri-window-15,
+#custom-niri-window-16,
+#custom-niri-window-17,
+#custom-niri-window-18,
+#custom-niri-window-19 {
   color: @white;
   font-family: "Iosevka NFP";
   font-size: 20px;
@@ -213,6 +234,31 @@ window#waybar {
   color: red;
 }
 
+#taskbar {
+  background: @black;
+  border-radius: 5px;
+  padding: 5px 8px;
+  margin: 10px;
+  border: 2px solid @three;
+}
+
+#taskbar button {
+  border-radius: 0px;
+  color: @three;
+  padding: 0 6px;
+  margin: 0 2px;
+  background: transparent;
+}
+
+#taskbar button.active {
+  color: @white;
+}
+
+#taskbar button:hover {
+  background: transparent;
+  color: @white;
+}
+
 #group-applets {
   background: @black;
   border-radius: 5px;
@@ -220,4 +266,55 @@ window#waybar {
   margin: 10px 10px 10px 5px;
   /* box-shadow: 0px 0px 3px rgba(0, 0, 0, 1); */
   border: 2px solid @three;
+}
+
+/* ── Niri workspace indicator (standalone container) ───────── */
+/* Container box rule kept as-is; font/icon styling comes from the
+   shared applets rule above (direct-ID selector — avoids GTK
+   button defaults that fight structural selectors).
+   Padding/margin are repeated here so the cascade restores the
+   standalone-container values over the shared rule. */
+
+#custom-niri-workspace {
+  background: @black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 10px 0 10px 10px;
+  border: 2px solid @three;
+}
+
+/* ── Niri per-workspace window strip (group container) ─────── */
+/* Container box rule kept as-is; per-button font/icon styling
+   comes from the #custom-niri-window-N direct-ID rule above. */
+
+#niri-windows {
+  background: @black;
+  border-radius: 5px;
+  padding: 5px 8px;
+  margin: 10px 0 10px 5px;
+  border: 2px solid @three;
+}
+
+/* Default (unfocused) tint for window-strip buttons. */
+#custom-niri-window-0.unfocused,
+#custom-niri-window-1.unfocused,
+#custom-niri-window-2.unfocused,
+#custom-niri-window-3.unfocused,
+#custom-niri-window-4.unfocused,
+#custom-niri-window-5.unfocused,
+#custom-niri-window-6.unfocused,
+#custom-niri-window-7.unfocused,
+#custom-niri-window-8.unfocused,
+#custom-niri-window-9.unfocused,
+#custom-niri-window-10.unfocused,
+#custom-niri-window-11.unfocused,
+#custom-niri-window-12.unfocused,
+#custom-niri-window-13.unfocused,
+#custom-niri-window-14.unfocused,
+#custom-niri-window-15.unfocused,
+#custom-niri-window-16.unfocused,
+#custom-niri-window-17.unfocused,
+#custom-niri-window-18.unfocused,
+#custom-niri-window-19.unfocused {
+  color: @three;
 }
