@@ -1,3 +1,45 @@
+# ┏━┓╻ ╻┏━╸╻  ╻  
+# ┗━┓┣━┫┣╸ ┃  ┃  
+# ┗━┛╹ ╹┗━╸┗━╸┗━╸
+shell-integration       = fish
+mouse-hide-while-typing = true
+
+# ╻┏ ┏━╸╻ ╻┏┓ ╻┏┓╻╺┳┓┏━┓
+# ┣┻┓┣╸ ┗┳┛┣┻┓┃┃┗┫ ┃┃┗━┓
+# ╹ ╹┗━╸ ╹ ┗━┛╹╹ ╹╺┻┛┗━┛
+keybind = ctrl+n=new_window
+
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+l=goto_split:right
+
+keybind = ctrl+b>h=new_split:left
+keybind = ctrl+b>j=new_split:down
+keybind = ctrl+b>k=new_split:up
+keybind = ctrl+b>l=new_split:right
+keybind = ctrl+b>f=toggle_split_zoom
+
+keybind = ctrl+b>n=next_tab
+keybind = ctrl+b>p=previous_tab
+keybind = ctrl+b>c=new_tab
+keybind = ctrl+b>1=goto_tab:1
+keybind = ctrl+b>2=goto_tab:2
+keybind = ctrl+b>3=goto_tab:3
+keybind = ctrl+b>4=goto_tab:4
+keybind = ctrl+b>5=goto_tab:5
+keybind = ctrl+b>6=goto_tab:6
+keybind = ctrl+b>7=goto_tab:7
+keybind = ctrl+b>8=goto_tab:8
+keybind = ctrl+b>9=goto_tab:9
+keybind = ctrl+b>0=last_tab
+
+keybind = ctrl+b>r=reload_config
+
+# window-save-state = always
+
+
+ 
 # ┏━╸┏━┓┏┓╻╺┳╸┏━┓
 # ┣╸ ┃ ┃┃┗┫ ┃ ┗━┓
 # ╹  ┗━┛╹ ╹ ╹ ┗━┛
@@ -6,7 +48,7 @@ font-family             = "IosevkaTerm NFM"
 font-family-bold        = "IosevkaTerm NFM Bold"
 font-family-italic      = "IosevkaTerm NFM Italic"
 font-family-bold-italic = "IosevkaTerm NFM Bold Italic"
-font-size = 16
+font-size = 18
 
 # ┏━╸┏━┓╻  ┏━┓┏━┓┏━┓
 # ┃  ┃ ┃┃  ┃ ┃┣┳┛┗━┓
@@ -17,77 +59,34 @@ foreground              = #978C8C
 selection-foreground    = #DCD9CF
 selection-background    = #514A50
 
-
-# ╺┳┓┏━┓┏━┓╻┏ 
-#  ┃┃┣━┫┣┳┛┣┻┓
-# ╺┻┛╹ ╹╹┗╸╹ ╹
-
-# # blacks
-# palette = 0=#3F3A3F
-# palette = 8=#746B6F
-
-# # reds
-# palette = 1=#94434A
-# palette = 9=#FC5C65
-
-# # greens
-# palette = 2=#788867
-# palette = 10=#C3E69F
-
-# # yellows
-# palette = 3=#928161
-# palette = 11=#F7D794
-
-# # blues
-# palette = 4=#558087
-# palette = 12=#7ED6DF
-
-# # magentas
-# palette = 5=#925D71
-# palette = 13=#F78FB3
-
-# # cyans
-# palette = 6=#558087
-# palette = 14=#87DCC6
-
-# # whites
-# palette = 7=#EEEDE0
-# palette = 15=#FDFFF1
-
-
-
-# ╻  ╻┏━╸╻ ╻╺┳╸
-# ┃  ┃┃╺┓┣━┫ ┃ 
-# ┗━╸╹┗━┛╹ ╹ ╹ 
-
 # blacks
-palette = 0=#746B6F
-palette = 8=#3F3A3F
+palette = 0=#3F3A3F
+palette = 8=#746B6F
 
 # reds
-palette = 1=#FC5C65
-palette = 9=#94434A
+palette = 1=#94434A
+palette = 9=#FC5C65
 
 # greens
-palette = 2=#C3E69F
-palette = 10=#788867
+palette = 2=#788867
+palette = 10=#C3E69F
 
 # yellows
-palette = 3=#F7D794
-palette = 11=#928161
+palette = 3=#928161
+palette = 11=#F7D794
 
 # blues
-palette = 4=#7ED6DF
-palette = 12=#558087
+palette = 4=#558087
+palette = 12=#7ED6DF
 
 # magentas
-palette = 5=#F78FB3
-palette = 13=#925D71
+palette = 5=#925D71
+palette = 13=#F78FB3
 
 # cyans
-palette = 6=#87DCC6
-palette = 14=#558087
+palette = 6=#558087
+palette = 14=#87DCC6
 
 # whites
-palette = 7=#FDFFF1
-palette = 15=#EEEDE0
+palette = 7=#EEEDE0
+palette = 15=#FDFFF1
