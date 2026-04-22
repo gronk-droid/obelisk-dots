@@ -1,0 +1,528 @@
+// ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+// ┃                   Niri Configuration                        ┃
+// ┃         Migrated from Hyprland — KDL format                 ┃
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+//
+// Docs: https://niri-wm.github.io/niri/
+// KDL:  https://kdl.dev
+
+// ═══════════════════════════════════════════════════════════════
+//  INPUT
+// ═══════════════════════════════════════════════════════════════
+
+input {
+    keyboard {
+        xkb {
+            // Fetches layout/options from org.freedesktop.locale1
+            // (set via localectl) when this section is empty.
+        }
+        numlock
+    }
+
+    mouse {
+        // natural-scroll
+        // accel-speed 0.0
+        // accel-profile "flat"
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        // accel-speed 0.2
+    }
+
+    // Follow-mouse focus — mirrors Hyprland follow_mouse=1
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  OUTPUTS
+// ═══════════════════════════════════════════════════════════════
+// Run `niri msg outputs` to verify exact refresh-rate strings.
+// Drop the @rate part if Niri rejects a value.
+
+output "DP-1" {
+    mode "2560x1440@239.970"
+    scale 1.0
+    position x=0 y=0
+    variable-refresh-rate on-demand=true
+    focus-at-startup
+}
+
+// vertical layout
+
+output "HDMI-A-1" {
+    mode "3440x1440@99.980"
+    scale 1.0
+    // HDMI-A-1 is mounted above DP-1 in your Hyprland setup
+    // (monitor = HDMI-A-1, 3440x1440@99.98Hz, 0x-1440, 1.0)
+    position x=0 y=-1440
+}
+
+// horizontal layout
+
+// output "HDMI-A-1" {
+//     mode "3440x1440@99.980"
+//     scale 1.0
+//     // HDMI-A-1 is mounted above DP-1 in your Hyprland setup
+//     // (monitor = HDMI-A-1, 3440x1440@99.98Hz, 0x-1440, 1.0)
+//     position x=-3440 y=0
+// }
+
+// ═══════════════════════════════════════════════════════════════
+//  NAMED WORKSPACES
+//  These always exist (won't vanish when empty) and anchor to
+//  their output so Slack / 1Password start on HDMI-A-1.
+// ═══════════════════════════════════════════════════════════════
+
+workspace "chat" {
+    open-on-output "HDMI-A-1"
+}
+
+workspace "secrets" {
+    open-on-output "HDMI-A-1"
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  LAYOUT
+// ═══════════════════════════════════════════════════════════════
+
+layout {
+    gaps 8
+
+    center-focused-column "on-overflow"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 2
+        // $six from your Hyprland colors.conf
+        active-color "#978c8c"
+        // $black from colors.conf
+        inactive-color "#2d2a2e"
+    }
+
+    border {
+        off
+        width 2
+        active-color "#978c8c"
+        inactive-color "#2d2a2e"
+    }
+
+    shadow {
+        // off by default; uncomment to enable
+        // on
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+
+    struts {
+        // 24 + gaps 8 = 32 px total outer space, matches Hyprland gapsout:32
+        // Top is omitted — waybar occupies that margin via layer-shell
+        left 24
+        right 24
+        bottom 24
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  MISCELLANEOUS
+// ═══════════════════════════════════════════════════════════════
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+hotkey-overlay {
+    // skip-at-startup
+}
+
+animations {
+    // off
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  STARTUP PROGRAMS
+// ═══════════════════════════════════════════════════════════════
+// hyprpaper is Hyprland-only; replaced by swaybg with per-output flags.
+// wob fifo used $HYPRLAND_INSTANCE_SIGNATURE so it's dropped.
+// hyprctl focusmonitor replaced by focus-at-startup on DP-1 output above.
+
+spawn-at-startup "waybar" "-c" "/home/gronk-droid/.config/waybar/config-niri.jsonc"
+spawn-at-startup "/home/gronk-droid/.config/waybar/scripts/niri-state.py"
+
+spawn-at-startup "fcitx5" "-d"
+spawn-at-startup "mako"
+spawn-at-startup "nm-applet" "--indicator"
+spawn-at-startup "playerctld" "daemon"
+spawn-at-startup "nwg-look" "-a"
+// spawn-at-startup "1password" "--disable-gpu" "--disable-software-rasterizer"
+// spawn-at-startup "slack" "--disable-gpu" "--disable-software-rasterizer"
+spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+
+// Wallpaper — hyprpaper is a vanilla wlr-layer-shell client (works on any
+// wlroots compositor). Config lives at ~/.config/hypr/hyprpaper.conf which
+// is hyprpaper's default lookup path (already has per-monitor paths).
+spawn-at-startup "hyprpaper"
+
+// Idle / lock
+spawn-sh-at-startup "swayidle -w timeout 120 'swaylock -f -c 000000' before-sleep 'swaylock -f -c 000000'"
+
+// ═══════════════════════════════════════════════════════════════
+//  WINDOW RULES
+// ═══════════════════════════════════════════════════════════════
+
+// --- Floating windows ---
+
+window-rule {
+    match app-id=r#"^org\.pulseaudio\.pavucontrol$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^blueman-manager$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^(xdg-desktop-portal-gtk|xdg-desktop-portal-kde|xdg-desktop-portal-hyprland).*$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^(polkit-gnome-authentication-agent-1|hyprpolkitagent|org\.kde\.polkit-kde-authentication-agent-1).*$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^CachyOSHello$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^zenity$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^mpv$"#
+    open-floating true
+    default-column-width { fixed 960; }
+    default-window-height { fixed 540; }
+}
+
+// Firefox / Vivaldi Picture-in-Picture
+window-rule {
+    match app-id=r#"^(firefox|org\.mozilla\.firefox|vivaldi-stable)$"# title=r#"^Picture.in.Picture$"#
+    open-floating true
+    default-column-width { fixed 960; }
+    default-window-height { fixed 540; }
+}
+
+// wofi launcher floats
+window-rule {
+    match app-id=r#"^wofi$"#
+    open-floating true
+}
+
+// Affinity apps — keep tiled except dialog
+window-rule {
+    match app-id=r#"^photo\.exe$"# title=r#"^New Document$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^designer\.exe$"# title=r#"^New Document$"#
+    open-floating true
+}
+
+// DaVinci Resolve
+window-rule {
+    match app-id=r#"^resolve$"#
+    open-floating true
+}
+
+// --- Opacity rules ---
+
+window-rule {
+    match app-id=r#"^(thunar|nemo)$"#
+    opacity 0.9
+}
+
+window-rule {
+    match app-id=r#"^(discord|armcord|webcord)$"#
+    opacity 0.9
+}
+
+window-rule {
+    match app-id=r#"^Spotify$"#
+    opacity 0.9
+}
+
+window-rule {
+    match app-id=r#"^kitty$"#
+    opacity 0.9
+}
+
+window-rule {
+    match app-id=r#"^Slack$"#
+    opacity 0.9
+}
+
+window-rule {
+    match app-id=r#"^1Password$"#
+    opacity 0.9
+}
+
+window-rule {
+    match app-id=r#"^(Code|Cursor)$"#
+    opacity 0.9
+}
+
+window-rule {
+    match app-id=r#"^com\.mitchellh\.ghostty$"#
+    opacity 0.9
+}
+
+window-rule {
+    match app-id=r#"^obsidian$"#
+    opacity 0.9
+}
+
+// --- Corner radius ---
+// Universal (matches Hyprland rounding:4 on tiled)
+window-rule {
+    geometry-corner-radius 4
+    clip-to-geometry true
+}
+
+// Floating windows get a slightly larger radius (matches Hyprland rounding:8)
+window-rule {
+    match is-floating=true
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
+// --- Screen capture privacy ---
+
+window-rule {
+    match app-id=r#"^1Password$"#
+    block-out-from "screencast"
+}
+
+// --- Auto-workspace placement ---
+
+window-rule {
+    match app-id=r#"^Slack$"#
+    open-on-workspace "chat"
+}
+
+window-rule {
+    match app-id=r#"^1Password$"#
+    open-on-workspace "secrets"
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  KEY BINDINGS
+//  Mod = Super when running on TTY (your normal session)
+// ═══════════════════════════════════════════════════════════════
+
+binds {
+    // ── Hotkey overlay ───────────────────────────────────────────
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // ── Application launchers ────────────────────────────────────
+    Mod+Return repeat=false hotkey-overlay-title="Terminal: ghostty"           { spawn "ghostty"; }
+    Mod+E      repeat=false hotkey-overlay-title="File manager: yazi"          { spawn "ghostty" "-e" "yazi"; }
+    Mod+Space  repeat=false hotkey-overlay-title="App launcher: wofi"          { spawn "wofi"; }
+    Mod+B      repeat=false hotkey-overlay-title="Resource monitor: btop"      { spawn "ghostty" "-e" "btop"; }
+    Mod+N      repeat=false hotkey-overlay-title="Editor: nvim"                { spawn "ghostty" "-e" "nvim"; }
+    Mod+S      repeat=false hotkey-overlay-title="Music: strawberry"           { spawn "strawberry"; }
+    Mod+W      repeat=false hotkey-overlay-title="Browser: vivaldi"            { spawn "vivaldi-stable"; }
+    Mod+O      repeat=false hotkey-overlay-title="Notes: obsidian"             { spawn "obsidian" "--disable-gpu" "--disable-software-rasterizer"; }
+    Mod+Shift+B repeat=false { spawn "/home/gronk-droid/.config/waybar/scripts/restart.sh"; }
+
+    // ── Session ──────────────────────────────────────────────────
+    Mod+Alt+L    repeat=false hotkey-overlay-title="Lock screen"               { spawn "swaylock" "-f" "-c" "000000"; }
+    Mod+Shift+E  repeat=false                                                  { quit; }
+    Ctrl+Alt+Delete repeat=false                                               { quit; }
+    Mod+Shift+P  repeat=false                                                  { power-off-monitors; }
+    Mod+Escape   allow-inhibiting=false                                        { toggle-keyboard-shortcuts-inhibit; }
+
+    // ── Overview (Hyprland had no direct equivalent; Mod+O was obsidian) ──
+    Mod+Shift+O  repeat=false hotkey-overlay-title="Toggle overview"           { toggle-overview; }
+
+    // ── Window actions ───────────────────────────────────────────
+    Mod+Q        repeat=false { close-window; }
+    Mod+V        repeat=false { toggle-window-floating; }
+    Mod+Shift+V  repeat=false { switch-focus-between-floating-and-tiling; }
+    // Fullscreen (matches your Hyprland Mod+F habit)
+    Mod+F        repeat=false { fullscreen-window; }
+    // Maximize column (fills the output width)
+    Mod+Ctrl+F   repeat=false { maximize-column; }
+    // Center the focused column
+    Mod+C                    { center-column; }
+    // Center all visible columns
+    Mod+Ctrl+C               { center-visible-columns; }
+    // Tab/stack mode for the focused column (replaces Mod+K group toggle)
+    Mod+T        repeat=false { toggle-column-tabbed-display; }
+
+    // ── Focus movement ───────────────────────────────────────────
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Up    { focus-workspace-up; }
+    Mod+Down  { focus-workspace-down; }
+    Mod+Shift+Up    { focus-monitor-up; }
+    Mod+Shift+Down  { focus-monitor-down; }
+    Mod+H     { focus-column-left; }
+    Mod+L     { focus-column-right; }
+    Mod+K     { focus-window-up; }
+    Mod+J     { focus-window-down; }
+
+    // Jump to first / last column
+    Mod+Home     { focus-column-first; }
+    Mod+End      { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    // ── Move windows / columns ───────────────────────────────────
+    // Left/Right = move the whole column
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+L     { move-column-right; }
+    // Up/Down = move window within column (stacking); arrow keys used for monitor focus above
+    Mod+Shift+K     { move-window-up; }
+    Mod+Shift+J     { move-window-down; }
+
+    // Consume/expel windows between adjacent columns
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    // ── Monitor focus / move ─────────────────────────────────────
+    // Focus a different monitor (directional)
+    Mod+Alt+Left  { focus-monitor-left; }
+    Mod+Alt+Right { focus-monitor-right; }
+    Mod+Alt+Up    { focus-monitor-up; }
+    Mod+Alt+Down  { focus-monitor-down; }
+    // Move focused column to another monitor
+    Mod+Alt+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Alt+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Alt+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Alt+Ctrl+Down  { move-column-to-monitor-down; }
+
+    // ── Workspace navigation ─────────────────────────────────────
+    // Dynamic per-monitor: Mod+1..9 = focus Nth workspace on CURRENT monitor.
+    // Mod+0 maps to workspace 10.
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+0 { focus-workspace 10; }
+
+    // Move focused column to workspace N (focus follows)
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+    Mod+Ctrl+0 { move-column-to-workspace 10; }
+
+    // Move silently (no focus switch) — mirrors Hyprland movetoworkspacesilent
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+Shift+0 { move-column-to-workspace 10; }
+
+    // Previous workspace (Hyprland Mod+/)
+    Mod+Slash { focus-workspace-previous; }
+
+    // Page Up/Down workspace navigation
+    Mod+Page_Down { focus-workspace-down; }
+    Mod+Page_Up   { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+
+    // Reorder workspaces
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+
+    // Scroll-wheel workspace / column navigation
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+    // Shift+scroll = horizontal column scroll (mirrors natural Wayland behavior)
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    // ── Column / window sizing ───────────────────────────────────
+    // Replaces the Hyprland resize submap entirely.
+    Mod+R           { switch-preset-column-width; }
+    Mod+Shift+R     { switch-preset-window-height; }
+    Mod+Ctrl+R      { reset-window-height; }
+    // Fine-tune column width ±10%  (was scratchpad Mod+- / Mod+=)
+    Mod+Minus       { set-column-width "-10%"; }
+    Mod+Equal       { set-column-width "+10%"; }
+    // Fine-tune window height ±10%
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    // Expand column to fill remaining visible space
+    Mod+Ctrl+E      { expand-column-to-available-width; }
+
+    // ── Volume control ───────────────────────────────────────────
+    // Mirrors Hyprland Mod+F7 / Mod+F6 / Mod+F5 (pactl)
+    Mod+F7 { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ +5%"; }
+    Mod+F6 { spawn-sh "pactl set-sink-volume @DEFAULT_SINK@ -5%"; }
+    Mod+F5 { spawn-sh "pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
+
+    // XF86 hardware volume keys (allow-when-locked so they work on lock screen)
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+    // ── Playback control ─────────────────────────────────────────
+    XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
+
+    // ── Screenshots ──────────────────────────────────────────────
+    // Built-in screenshot actions (grimblast is Hyprland-IPC-only)
+    // Print = interactive area picker  (equiv. grimblast copy area)
+    // Shift+Print = focused output      (equiv. grimblast copy output)
+    Print       repeat=false { screenshot; }
+    Shift+Print repeat=false { screenshot-screen; }
+    Ctrl+Print  repeat=false { screenshot-screen; }
+    Alt+Print   repeat=false { screenshot-window; }
+}
