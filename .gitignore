@@ -9,16 +9,9 @@
 # ┗━┛┗━┛╹ ╹┗━╸    ╹ ╹ ╹╹╹ ╹┗━┛┗━┛
 !.gitignore
 !.gitconfig
-!ghostty/**# blacks
-palette = 0 = #3F3A3F
-palette = 8 = #746B6F
-
-# reds
-palette = 1 = #94434A
-palette = 9 = #FC5C65
-
-# green
-
+!ghostty/**
+!niri/**
+!yazi/**
 !hypr/**
 !btop/btop.conf
 !nnn/**
@@ -36,3 +29,4 @@ palette = 9 = #FC5C65
 !pkglist_aur.txt
 !vivaldi-snippets/**
 !espanso/**
+!install/**
