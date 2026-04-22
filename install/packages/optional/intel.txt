@@ -1,0 +1,7 @@
+# Intel CPU microcode and Intel GPU/media packages.
+# intel-ucode is added separately as a single package prompt.
+# This file covers Intel integrated graphics extras.
+intel-media-driver
+lib32-mesa
+vulkan-intel
+lib32-vulkan-intel

@@ -1,0 +1,31 @@
+# System services to enable after package installation.
+# One unit name per line. Lines starting with # are ignored.
+# Hardware-specific services (fancontrol, lm_sensors, xt4-webcam, etc.) are
+# omitted here — enable them manually or add them to an optional profile.
+
+# Core networking
+NetworkManager.service
+NetworkManager-dispatcher.service
+
+# Display manager (login screen)
+sddm.service
+
+# Bluetooth
+bluetooth.service
+
+# Periodic SSD/HDD TRIM
+fstrim.timer
+
+# Time sync
+systemd-timesyncd.service
+
+# Container / virtualization
+docker.service
+containerd.service
+
+# Remote access / sync
+tailscaled.service
+syncthing@%u.service
+
+# Printing (comment out if not needed)
+# cups.service

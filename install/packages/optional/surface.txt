@@ -1,0 +1,9 @@
+# Microsoft Surface specific packages.
+# Requires the linux-surface repository to be added first.
+# setup.sh handles adding the repo key + mirrorlist entry before installing these.
+# See: https://github.com/linux-surface/linux-surface/wiki/Installation-and-Setup
+linux-surface
+linux-surface-headers
+iptsd
+surface-control
+libwacom-surface

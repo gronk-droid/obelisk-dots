@@ -1,0 +1,8 @@
+# Laptop-specific power management and hardware packages.
+# Added automatically when a laptop chassis is detected.
+tlp
+tlp-rdw
+powertop
+acpi
+acpid
+thermald

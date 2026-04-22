@@ -1,0 +1,8 @@
+# NVIDIA GPU drivers and utilities.
+# Added automatically when an NVIDIA GPU is detected at setup time.
+# nvidia-open requires kernel 5.18+ and a Turing (RTX 20xx) or newer GPU.
+# For older GPUs swap nvidia-open for nvidia-dkms.
+nvidia-open
+nvidia-utils
+lib32-nvidia-utils
+nvidia-settings

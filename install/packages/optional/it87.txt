@@ -1,0 +1,5 @@
+# IT87xx family hardware monitor kernel module.
+# Required for fan control on motherboards with ITE IT87xx Super I/O chips
+# (common on ASUS, Gigabyte boards). Provided via chaotic-aur.
+# fancontrol.service in services/enable.txt reads /etc/fancontrol written by pwmconfig.
+it87-dkms-git

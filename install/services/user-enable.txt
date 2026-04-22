@@ -1,0 +1,7 @@
+# User-level systemd units to enable (systemctl --user enable).
+# Enabled as the regular user after login.
+espanso.service
+wireplumber.service
+xdg-user-dirs.service
+pipewire.socket
+pipewire-pulse.socket
