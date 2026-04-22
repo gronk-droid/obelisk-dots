@@ -1,0 +1,104 @@
+# File Manager Configuration
+[mgr]
+ratio          = [1, 4, 3]    # Pane size ratios [parent, current, preview]
+sort_by        = "alphabetical" # Sorting: alphabetical, natural, modified, size, etc.
+sort_sensitive = false        # Case-insensitive sorting
+sort_reverse   = false        # Normal sort order
+linemode       = "size"       # Show file size in list
+show_hidden    = false        # Hidden files visibility
+show_symlink   = true         # Show symlink targets
+scrolloff      = 5            # Lines of context around cursor
+
+# Preview Configuration
+[preview]
+max_width      = 600          # Maximum preview width
+max_height     = 900          # Maximum preview height
+cache_dir      = ""           # Uses default cache location
+
+# Task Management Configuration
+[tasks]
+micro_workers  = 5            # Workers for small tasks
+macro_workers  = 3            # Workers for large tasks
+bizarre_retry  = 5            # Retry attempts for failed tasks
+image_alloc    = 536870912    # Memory allocation for images (512MB)
+
+# Opener Configuration
+[opener]
+# Text editor - for bulk rename and text files
+edit = [
+  { run = 'nvim "$@"', block = true, for = "unix" },
+]
+
+# Video files - your custom mpv playlist script
+video = [
+  { run = '"/home/gronk-droid/.config/yazi/scripts/mpv-playlist.sh" "$@"', block = true }
+]
+
+# Audio files - your custom mpv playlist script
+audio = [
+  { run = '"/home/gronk-droid/.config/yazi/scripts/mpv-playlist.sh" "$@"', block = true }
+]
+
+# PDF files - mupdf
+pdf = [
+  { run = 'mupdf "$@"', block = true }
+]
+
+# Default system opener
+open = [
+  { run = 'open "$@"', desc = "Open", for = "macos" },
+]
+
+# Open Rules Configuration
+[open]
+rules = [
+  # Text files
+  { mime = "text/*", use = "edit" },
+  { mime = "application/json", use = "edit" },
+  { mime = "application/x-yaml", use = "edit" },
+  { mime = "inode/x-empty", use = "edit" },
+  
+  # Video files
+  { mime = "video/*", use = "video" },
+  
+  # Audio files
+  { mime = "audio/*", use = "audio" },
+  
+  # PDF files
+  { mime = "application/pdf", use = "pdf" },
+  
+  # Image files - opens in Preview.app
+  { mime = "image/*", use = "open" },
+  
+  # Fallback to system opener
+  { mime = "*/*", use = "open" },
+]
+
+# Plugin Configuration
+[plugin]
+prepend_previewers = []
+append_previewers  = []
+prepend_preloaders = []
+append_preloaders  = []
+
+# Input Configuration
+[input]
+# cd_title  = "Change directory:"
+# cd_origin = "top-center"
+# cd_offset = [0, 2, 50, 3]
+
+# Confirmation Dialog Configuration
+[confirm]
+# quit_title  = "Quit"
+# quit_origin = "center"
+# quit_offset = [0, 0, 40, 3]
+
+# Select Configuration
+[select]
+# open_title  = "Open with:"
+# open_origin = "hovered"
+# open_offset = [0, 0, 40, 10]
+
+# Log Configuration
+[log]
+enabled = false
