@@ -32,11 +32,11 @@ else
     set _asdf_shims "$ASDF_DATA_DIR/shims"
 end
 
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
+# Always prepend shims so they precede /usr/bin even if already in PATH elsewhere.
+# The old "if not contains" guard kept shims in their original (late) position
+# when a system profile had already added them after /usr/bin.
+set -gx PATH (string match --invert -- $_asdf_shims $PATH)
+set -gx --prepend PATH $_asdf_shims
 set --erase _asdf_shims
 
 # zoxide init
