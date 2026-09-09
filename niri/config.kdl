@@ -51,23 +51,23 @@ output "DP-1" {
 
 // vertical layout
 
-output "HDMI-A-1" {
-    mode "3440x1440@99.980"
-    scale 1.0
-    // HDMI-A-1 is mounted above DP-1 in your Hyprland setup
-    // (monitor = HDMI-A-1, 3440x1440@99.98Hz, 0x-1440, 1.0)
-    position x=0 y=-1440
-}
-
-// horizontal layout
-
 // output "HDMI-A-1" {
 //     mode "3440x1440@99.980"
 //     scale 1.0
 //     // HDMI-A-1 is mounted above DP-1 in your Hyprland setup
 //     // (monitor = HDMI-A-1, 3440x1440@99.98Hz, 0x-1440, 1.0)
-//     position x=-3440 y=0
+//     position x=0 y=-1440
 // }
+
+// horizontal layout
+
+output "HDMI-A-1" {
+    mode "3440x1440@99.980"
+    scale 1.0
+    // HDMI-A-1 is mounted above DP-1 in your Hyprland setup
+    // (monitor = HDMI-A-1, 3440x1440@99.98Hz, 0x-1440, 1.0)
+    position x=-3440 y=0
+}
 
 // ═══════════════════════════════════════════════════════════════
 //  NAMED WORKSPACES
@@ -93,12 +93,11 @@ layout {
     center-focused-column "on-overflow"
 
     preset-column-widths {
-        proportion 0.33333
         proportion 0.5
-        proportion 0.66667
+        proportion 1.0
     }
 
-    default-column-width { proportion 0.5; }
+    default-column-width { proportion 0.50; }
 
     focus-ring {
         width 2
@@ -250,58 +249,20 @@ window-rule {
     open-floating true
 }
 
-// --- Opacity rules ---
-
-window-rule {
-    match app-id=r#"^(thunar|nemo)$"#
-    opacity 0.9
-}
-
-window-rule {
-    match app-id=r#"^(discord|armcord|webcord)$"#
-    opacity 0.9
-}
-
-window-rule {
-    match app-id=r#"^Spotify$"#
-    opacity 0.9
-}
-
-window-rule {
-    match app-id=r#"^kitty$"#
-    opacity 0.9
-}
-
-window-rule {
-    match app-id=r#"^Slack$"#
-    opacity 0.9
-}
-
-window-rule {
-    match app-id=r#"^1Password$"#
-    opacity 0.9
-}
-
-window-rule {
-    match app-id=r#"^(Code|Cursor)$"#
-    opacity 0.9
-}
-
-window-rule {
-    match app-id=r#"^com\.mitchellh\.ghostty$"#
-    opacity 0.9
-}
-
-window-rule {
-    match app-id=r#"^obsidian$"#
-    opacity 0.9
-}
-
-// --- Corner radius ---
-// Universal (matches Hyprland rounding:4 on tiled)
+// --- Corner radius + compositor opacity ---
+// Universal (matches Hyprland rounding:4 on tiled).
+//
+// Opacity: `niri msg focused-window` / `pick-window` show the real app-id (regex is
+// case-sensitive). Cursor is `cursor`, VS Code is usually `code` — not `Cursor` / `Code`.
+// If a window looks fully opaque anyway, compositor opacity only blends toward whatever is
+// behind the tile (gaps, wallpaper); the editor surface is still mostly solid pixels.
+// If a window *ignores* your opacity rule, you may have toggled it with
+// `toggle-window-rule-opacity`; focus that window and toggle once more, or restart the app
+// (niri keeps that toggle until the resolved rule is opaque / removed).
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
+    opacity 1.0
 }
 
 // Floating windows get a slightly larger radius (matches Hyprland rounding:8)
@@ -314,20 +275,9 @@ window-rule {
 // --- Screen capture privacy ---
 
 window-rule {
-    match app-id=r#"^1Password$"#
+    // `niri msg windows` reports lowercase `1password` for the Linux app.
+    match app-id=r#"^1password$"#
     block-out-from "screencast"
-}
-
-// --- Auto-workspace placement ---
-
-window-rule {
-    match app-id=r#"^Slack$"#
-    open-on-workspace "chat"
-}
-
-window-rule {
-    match app-id=r#"^1Password$"#
-    open-on-workspace "secrets"
 }
 
 // ═══════════════════════════════════════════════════════════════
