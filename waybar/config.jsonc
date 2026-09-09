@@ -234,6 +234,7 @@
       "default": ["󰕿", "󰖀", "󰕾"]
     },
     "on-click": "pamixer -t",
+    "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "on-click-right": "bash ~/.config/rofi/applets/bin/volume.sh --row 3",
     "tooltip-format": "{volume}%"
   },
