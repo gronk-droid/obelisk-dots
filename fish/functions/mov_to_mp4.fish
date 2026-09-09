@@ -9,6 +9,7 @@ function mov_to_mp4 --description "Convert MOV files to MP4 format using H.264 a
     set output_dir "."
     set use_software false
     set skip_verify false
+    set scale_720 false
     set remaining_args
 
     for arg in $argv
@@ -17,12 +18,15 @@ function mov_to_mp4 --description "Convert MOV files to MP4 format using H.264 a
                 set use_software true
             case --no-verify
                 set skip_verify true
+            case --720p
+                set scale_720 true
             case --help -h
                 echo "Usage: mov_to_mp4 [output_dir] [options]"
                 echo ""
                 echo "Options:"
                 echo "  --software, -s   Use software encoding only (slower but more reliable)"
                 echo "  --no-verify      Skip frame count verification"
+                echo "  --720p           Scale output to 720p (keeps aspect ratio)"
                 echo "  --help, -h       Show this help message"
                 return 0
             case '*'
@@ -68,6 +72,13 @@ function mov_to_mp4 --description "Convert MOV files to MP4 format using H.264 a
         set -a ffmpeg_opts -hwaccel none
     end
 
+    # -2 keeps the aspect ratio while forcing an even width (required by h264)
+    set scale_opts
+    if test $scale_720 = true
+        echo "Scaling output to 720p"
+        set scale_opts -vf scale=-2:720
+    end
+
     # Process each file
     for input_file in $mov_files
         set base_filename (string replace -r '\.mov$' '' $input_file)
@@ -78,7 +89,7 @@ function mov_to_mp4 --description "Convert MOV files to MP4 format using H.264 a
         
         # Run ffmpeg with -nostdin to prevent hanging on prompts
         # Use tee to show progress while also capturing to log
-        ffmpeg $ffmpeg_opts -nostdin -i $input_file -vcodec h264 -acodec aac $output_file 2>&1 | tee $log_file
+        ffmpeg $ffmpeg_opts -nostdin -i $input_file $scale_opts -vcodec h264 -acodec aac $output_file 2>&1 | tee $log_file
         set ffmpeg_status $pipestatus[1]
         
         # Check for encoding errors in the log
