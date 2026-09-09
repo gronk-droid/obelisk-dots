@@ -44,6 +44,12 @@ keybind = ctrl+b>r=reload_config
 # ┣╸ ┃ ┃┃┗┫ ┃ ┗━┓
 # ╹  ┗━┛╹ ╹ ╹ ┗━┛
 
+# ┏━┓╻ ╻┏━┓╺┳┓┏━╸┏━┓
+# ┗━┓┣━┫┣━┫ ┃┃┣╸ ┣┳┛
+# ┗━┛╹ ╹╹ ╹╺┻┛┗━╸╹┗╸
+# custom-shader           = shaders/crt-geom.glsl
+# custom-shader-animation = true
+
 font-family             = "IosevkaTerm NFM"
 font-family-bold        = "IosevkaTerm NFM Bold"
 font-family-italic      = "IosevkaTerm NFM Italic"
