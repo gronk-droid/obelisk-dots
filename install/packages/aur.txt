@@ -26,4 +26,5 @@ soulseekqt
 termius-deb
 ttf-roboto-flex
 ttf-segoe-ui-variable
+xwayland-satellite-git
 youtube-desktop

@@ -203,6 +203,5 @@ xorg-xwd
 xorg-xwininfo
 xorg-xwud
 xss-lock
-xwayland-satellite
 yazi
 zoxide
