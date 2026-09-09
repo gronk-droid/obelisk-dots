@@ -26,27 +26,28 @@ image_alloc    = 536870912    # Memory allocation for images (512MB)
 [opener]
 # Text editor - for bulk rename and text files
 edit = [
-  { run = 'nvim "$@"', block = true, for = "unix" },
+  { run = 'nvim %s', block = true, for = "unix" },
 ]
 
 # Video files - your custom mpv playlist script
 video = [
-  { run = '"/home/gronk-droid/.config/yazi/scripts/mpv-playlist.sh" "$@"', block = true }
+  { run = '"/home/gronk-droid/.config/yazi/scripts/mpv-playlist.sh" %s1', block = true }
 ]
 
 # Audio files - your custom mpv playlist script
 audio = [
-  { run = '"/home/gronk-droid/.config/yazi/scripts/mpv-playlist.sh" "$@"', block = true }
+  { run = '"/home/gronk-droid/.config/yazi/scripts/mpv-playlist.sh" %s1', block = true }
 ]
 
 # PDF files - mupdf
 pdf = [
-  { run = 'mupdf "$@"', block = true }
+  { run = 'mupdf %s', block = true }
 ]
 
 # Default system opener
 open = [
-  { run = 'open "$@"', desc = "Open", for = "macos" },
+  { run = 'xdg-open %s1', desc = "Open", for = "unix" },
+  { run = 'open %s', desc = "Open", for = "macos" },
 ]
 
 # Open Rules Configuration
