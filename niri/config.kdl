@@ -61,12 +61,23 @@ output "DP-1" {
 
 // horizontal layout
 
+// output "HDMI-A-1" {
+//     mode "3440x1440@99.980"
+//     scale 1.0
+//     // HDMI-A-1 is mounted above DP-1 in your Hyprland setup
+//     // (monitor = HDMI-A-1, 3440x1440@99.98Hz, 0x-1440, 1.0)
+//     position x=-3440 y=0
+// }
+
+// rotated 90° counter-clockwise. Hardware mode stays 3440x1440;
+// logical size becomes 1440×3440, so it sits to the left of DP-1.
+// Use transform "270" if the picture is upside down.
+// Uncomment this and comment out the horizontal layout above to use it.
 output "HDMI-A-1" {
     mode "3440x1440@99.980"
     scale 1.0
-    // HDMI-A-1 is mounted above DP-1 in your Hyprland setup
-    // (monitor = HDMI-A-1, 3440x1440@99.98Hz, 0x-1440, 1.0)
-    position x=-3440 y=0
+    transform "90"
+    position x=-1440 y=-1146
 }
 
 // ═══════════════════════════════════════════════════════════════
